@@ -1,0 +1,167 @@
+<!--
+--  Downloaded from : https://haxor.my.id/save/duar2.html
+--  Official Web : https://prinsh.com
+--  script-deface-generator.prinsh.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fall Store Hosting</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #001f3f; /* Dark blue background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white; /* Change text color to white */
+        }
+        .container {
+            width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="password"], input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff; /* Darker blue button */
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+        .toggle-link {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="register-form">
+        <h2>Register</h2>
+        <div class="form-group">
+            <label for="register-email">Email:</label>
+            <input type="email" id="register-email" placeholder="Enter your email">
+            <span class="error" id="register-email-error"></span>
+        </div>
+        <div class="form-group">
+            <label for="register-password">Password:</label>
+            <input type="password" id="register-password" placeholder="Enter your password">
+            <span class="error" id="register-password-error"></span>
+        </div>
+        <button class="button" onclick="register()">Register</button>
+        <div class="toggle-link">
+            <p>Already have an account? <a href="#" onclick="toggleForms()">Login here</a></p>
+        </div>
+    </div>
+
+    <div class="container" id="login-form" style="display:none;">
+        <h2>Login</h2>
+        <div class="form-group">
+            <label for="login-email">Email:</label>
+            <input type="email" id="login-email" placeholder="Enter your email">
+            <span class="error" id="login-email-error"></span>
+        </div>
+        <div class="form-group">
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" placeholder="Enter your password">
+            <span class="error" id="login-password-error"></span>
+        </div>
+        <button class="button" onclick="login()">Login</button>
+        <div class="toggle-link">
+            <p>Don't have an account? <a href="#" onclick="toggleForms()">Register here</a></p>
+        </div>
+    </div>
+
+    <script>
+        function toggleForms() {
+            document.getElementById('register-form').style.display = 
+                document.getElementById('register-form').style.display === 'none' ? 'block' : 'none';
+            document.getElementById('login-form').style.display = 
+                document.getElementById('login-form').style.display === 'none' ? 'block' : 'none';
+        }
+
+        function register() {
+            let email = document.getElementById('register-email').value;
+            let password = document.getElementById('register-password').value;
+            let valid = true;
+
+            if (email === "") {
+                document.getElementById('register-email-error').textContent = "Email is required";
+                valid = false;
+            } else {
+                document.getElementById('register-email-error').textContent = "";
+            }
+
+            if (password === "") {
+                document.getElementById('register-password-error').textContent = "Password is required";
+                valid = false;
+            } else {
+                document.getElementById('register-password-error').textContent = "";
+            }
+
+            if (valid) {
+                alert("Registration successful! Please login.");
+                toggleForms();
+            }
+        }
+
+        function login() {
+            let email = document.getElementById('login-email').value;
+            let password = document.getElementById('login-password').value;
+            let registeredEmail = document.getElementById('register-email').value;
+            let registeredPassword = document.getElementById('register-password').value;
+            let valid = true;
+
+            if (email === "") {
+                document.getElementById('login-email-error').textContent = "Email is required";
+                valid = false;
+            } else {
+                document.getElementById('login-email-error').textContent = "";
+            }
+
+            if (password === "") {
+                document.getElementById('login-password-error').textContent = "Password is required";
+                valid = false;
+            } else {
+                document.getElementById('login-password-error').textContent = "";
+            }
+
+            if (valid && email === registeredEmail && password === registeredPassword) {
+                window.location.href = "https://haxor.my.id/open/dashboard-fallhosting.html";
+            } else if (valid) {
+                alert("Invalid email or password!");
+            }
+        }
+    </script>
+</body>
+</html>
